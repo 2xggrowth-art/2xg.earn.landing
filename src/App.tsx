@@ -12,6 +12,7 @@ const EarnFormulaViz = lazy(() => import("./components/EarnFormulaViz").then(m =
 const ROICalculator = lazy(() => import("./components/ROICalculator").then(m => ({ default: m.ROICalculator })));
 const TimelineSection = lazy(() => import("./components/TimelineSection").then(m => ({ default: m.TimelineSection })));
 const IncentiveDashboardPreview = lazy(() => import("./components/IncentiveDashboardPreview").then(m => ({ default: m.IncentiveDashboardPreview })));
+const IndustriesSection = lazy(() => import("./components/IndustriesSection").then(m => ({ default: m.IndustriesSection })));
 const PricingSection = lazy(() => import("./components/PricingSection").then(m => ({ default: m.PricingSection })));
 const Testimonials = lazy(() => import("./components/Testimonials").then(m => ({ default: m.Testimonials })));
 const FAQ = lazy(() => import("./components/FAQ").then(m => ({ default: m.FAQ })));
@@ -65,6 +66,11 @@ export function App() {
             <ScrollStackItem itemClassName="bg-[#f6fbf7]">
               <Suspense fallback={<SectionLoader />}>
                 <IncentiveDashboardPreview />
+              </Suspense>
+            </ScrollStackItem>
+            <ScrollStackItem itemClassName="bg-[#f6fbf7]">
+              <Suspense fallback={<SectionLoader />}>
+                <IndustriesSection />
               </Suspense>
             </ScrollStackItem>
             <ScrollStackItem itemClassName="bg-[#f6fbf7]">
