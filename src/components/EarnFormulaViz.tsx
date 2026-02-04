@@ -99,18 +99,18 @@ export function EarnFormulaViz() {
   return (
     <section
       id="earn"
-      className="px-4 py-16 text-slate-900 sm:py-20"
+      className="px-4 py-6 text-slate-900 sm:py-10"
       aria-labelledby="earn-heading"
     >
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <ScrollFloat
-            containerClassName="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl"
+            containerClassName="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
           >
             <span className="text-emerald-600">EARN</span> = Effort × Accountability ×
             Rewards × Numbers
           </ScrollFloat>
-          <p className="mt-3 text-sm text-slate-900 sm:text-base">
+          <p className="mt-3 text-base text-slate-900 sm:text-lg">
             Your revenue isn&apos;t random. 2XG EARN installs a formula so every rep
             understands exactly how their actions convert into earnings and team growth.
           </p>
@@ -120,19 +120,19 @@ export function EarnFormulaViz() {
           {items.map((item, index) => (
             <div
               key={item.key}
-              className="relative flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white/60 p-4 text-center shadow-sm sm:gap-4 sm:p-6"
+              className="group relative flex flex-col items-center gap-3 rounded-2xl border border-slate-200 bg-white/60 p-4 text-center shadow-sm sm:gap-4 sm:p-6 transition-all duration-300 hover:shadow-xl hover:shadow-emerald-200/30 hover:border-emerald-400 hover:-translate-y-2 hover:scale-[1.03] hover:bg-gradient-to-br hover:from-white hover:to-emerald-50/30 cursor-default"
             >
-              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl sm:h-16 sm:w-16 ${item.bgColor}`}>
+              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl sm:h-16 sm:w-16 ${item.bgColor} transition-all duration-300 group-hover:scale-110 group-hover:rotate-3`}>
                 {item.icon}
               </div>
-              <div className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${item.color} text-base font-bold text-white shadow-lg sm:h-10 sm:w-10 sm:text-lg`}>
+              <div className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${item.color} text-base font-bold text-white shadow-lg sm:h-10 sm:w-10 sm:text-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl`}>
                 {item.key}
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-900 sm:text-base">
+                <p className="text-base font-semibold text-slate-900 sm:text-lg">
                   {item.title}
                 </p>
-                <p className="mt-1.5 text-xs text-slate-900 sm:mt-2 sm:text-sm">{item.description}</p>
+                <p className="mt-1.5 text-sm text-slate-900 sm:mt-2 sm:text-base">{item.description}</p>
               </div>
               {index < items.length - 1 && (
                 <div className="pointer-events-none absolute right-[-20px] top-1/2 z-10 hidden text-2xl font-bold text-emerald-400 md:block">
@@ -143,7 +143,7 @@ export function EarnFormulaViz() {
           ))}
         </div>
 
-        <div className="mt-6 rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-100/50 to-white/50 p-4 text-xs text-slate-900 sm:text-sm">
+        <div className="mt-6 rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-100/50 to-white/50 p-4 text-sm text-slate-900 sm:text-base transition-all duration-300 hover:shadow-lg hover:border-emerald-400 hover:from-emerald-100/70 hover:to-white/70 cursor-default">
           <p>
             When any variable in the EARN formula is weak, performance stalls. 2XG EARN
             upgrades all four, then measures the compounding effect on revenue over the

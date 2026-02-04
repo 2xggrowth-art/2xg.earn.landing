@@ -98,7 +98,10 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
             scroller,
             start: 'top 95%',
             end: scrollEnd,
-            toggleActions: 'play none none none'
+            toggleActions: 'play none none none',
+            once: true,
+            fastScrollEnd: true,
+            preventOverlaps: true
           }
         }
       );
@@ -108,7 +111,7 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
   }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger]);
 
   return (
-    <h2 ref={containerRef} className={`${containerClassName}`}>
+    <h2 ref={containerRef} className={`overflow-hidden ${containerClassName}`}>
       <span className={`block ${textClassName}`}>{wrappedContent}</span>
     </h2>
   );

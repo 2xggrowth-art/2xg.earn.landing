@@ -1,24 +1,27 @@
 import DecryptedText from './DecryptedText';
+import { motion } from 'motion/react';
+import { useBooking } from '../context/BookingContext';
 
 export function HeroSection() {
+  const { openModal } = useBooking();
   return (
     <section
-      className="hero-grid-bg border-b border-emerald-100/60"
+      className="hero-grid-bg border-b border-emerald-100/60 overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-2 md:gap-12 md:py-24 lg:px-6">
-        <div className="flex flex-col gap-6 md:gap-8">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-[10px] font-medium text-emerald-700 shadow-sm ring-1 ring-emerald-100 sm:text-xs">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            System-Enforced Sales Growth
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-6 md:grid-cols-2 md:gap-12 md:py-10 lg:px-6 overflow-hidden">
+        <div className="flex flex-col gap-6 md:gap-8 min-w-0">
+          <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 text-xs font-medium text-emerald-700 shadow-sm ring-1 ring-emerald-100 sm:text-sm transition-all duration-300 hover:shadow-md hover:ring-emerald-200 hover:bg-white/90 cursor-default">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            For Indian E-commerce, Retail & Manufacturing SMBs
           </span>
-          <div className="space-y-4">
+          <div className="space-y-4 min-w-0">
             <h1
               id="hero-heading"
-              className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl"
+              className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl break-words"
             >
               <DecryptedText
-                text="Don't Just Manage Leads. "
+                text="Stop Chasing Your Sales Team. "
                 animateOn="view"
                 sequential={true}
                 speed={60}
@@ -27,7 +30,7 @@ export function HeroSection() {
                 encryptedClassName="text-slate-400"
               />
               <DecryptedText
-                text="EARN"
+                text="Start Tracking Results."
                 animateOn="view"
                 sequential={true}
                 speed={60}
@@ -35,124 +38,78 @@ export function HeroSection() {
                 className="text-emerald-600"
                 encryptedClassName="text-emerald-300"
               />
-              <DecryptedText
-                text=" From Them."
-                animateOn="view"
-                sequential={true}
-                speed={60}
-                revealDirection="start"
-                className="text-slate-900"
-                encryptedClassName="text-slate-400"
-              />
             </h1>
-            <p className="max-w-xl text-sm leading-relaxed text-slate-900 sm:text-base">
-              2XG EARN is a structured sales performance platform that aligns
-              incentives, accountability, and real-time tracking so teams hit
-              targets consistently within 90 days.
+            <p className="text-base leading-relaxed text-slate-900 sm:text-lg break-words">
+              2XG EARN is a system-enforced sales growth platform for Indian SMBs.
+              While CRMs track what your team says they'll do, we ensure they actually
+              do it—through automated accountability and a proven 90-day transformation.
             </p>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a
-              href="#cta"
-              className="inline-flex w-full items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/30 hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 sm:w-auto"
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap">
+            <button
+              onClick={() => openModal()}
+              type="button"
+              className="inline-flex w-full items-center justify-center rounded-full bg-emerald-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-500/30 transition-all duration-300 hover:bg-emerald-400 hover:scale-105 hover:shadow-xl hover:shadow-emerald-400/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 active:scale-95 sm:w-auto"
             >
               Book a Strategy Call
-            </a>
-            <a
-              href="#earn"
-              className="inline-flex w-full items-center justify-center rounded-full border border-emerald-600/50 bg-white/80 px-5 py-2.5 text-sm font-medium text-emerald-700 hover:border-emerald-600 hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 sm:w-auto"
+            </button>
+            <button
+              onClick={() => openModal()}
+              type="button"
+              className="inline-flex w-full items-center justify-center rounded-full border border-emerald-600/50 bg-white/80 px-6 py-3 text-base font-medium text-emerald-700 transition-all duration-300 hover:border-emerald-600 hover:bg-emerald-50 hover:scale-105 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 active:scale-95 sm:w-auto"
             >
               See How It Works
-            </a>
+            </button>
           </div>
-          <dl className="mt-2 grid grid-cols-3 gap-2 border-t border-emerald-100/50 pt-6 text-xs text-slate-900 sm:gap-4 sm:text-sm">
-            <div className="space-y-1">
-              <dt className="font-semibold text-slate-900">90 days</dt>
-              <dd className="text-slate-800">To measurable performance lift</dd>
+          <dl className="-mt-2 grid grid-cols-1 gap-2 border-t border-emerald-100/50 pt-3 text-sm text-slate-900 sm:grid-cols-3 sm:gap-4 sm:text-base">
+            <div className="space-y-1 p-2 rounded-lg transition-all duration-300 hover:bg-emerald-50/50 cursor-default min-w-0">
+              <dt className="font-semibold text-slate-900 break-words">90 days</dt>
+              <dd className="text-slate-800 break-words">From chaos to consistency</dd>
             </div>
-            <div className="space-y-1">
-              <dt className="font-semibold text-slate-900">Incentive-first</dt>
-              <dd className="text-slate-800">Rewards aligned to behaviors</dd>
+            <div className="space-y-1 p-2 rounded-lg transition-all duration-300 hover:bg-emerald-50/50 cursor-default min-w-0">
+              <dt className="font-semibold text-slate-900 break-words">System-Enforced</dt>
+              <dd className="text-slate-800 break-words">Automated accountability</dd>
             </div>
-            <div className="space-y-1">
-              <dt className="font-semibold text-slate-900">System-based</dt>
-              <dd className="text-slate-800">Not coaching, a framework</dd>
+            <div className="space-y-1 p-2 rounded-lg transition-all duration-300 hover:bg-emerald-50/50 cursor-default min-w-0">
+              <dt className="font-semibold text-slate-900 break-words">ROI-Proven</dt>
+              <dd className="text-slate-800 break-words">300-500% return in 90 days</dd>
             </div>
           </dl>
         </div>
         <div
-          className="flex items-center justify-center pt-4 md:pt-0"
+          className="flex items-center justify-center pt-4 md:pt-0 min-w-0"
           aria-label="Sales performance dashboard preview"
         >
-          <div className="w-full max-w-md transform rounded-2xl bg-slate-900/95 p-4 shadow-2xl shadow-emerald-500/20 ring-1 ring-emerald-400/20 transition-transform duration-500 hover:scale-[1.02]">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <p className="text-xs font-medium text-slate-400">
-                  Team Performance
-                </p>
-                <p className="text-sm font-semibold text-slate-50">
-                  Next 90 Days
-                </p>
-              </div>
-              <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-[10px] font-medium text-emerald-300 sm:text-xs">
-                +26% forecasted
-              </span>
-            </div>
-            <div className="space-y-3">
-              <div>
-                <div className="flex items-center justify-between text-xs text-slate-300">
-                  <span>Quota Attainment</span>
-                  <span className="font-semibold text-emerald-400">78%</span>
-                </div>
-                <div className="mt-1 h-2 rounded-full bg-slate-800">
-                  <div className="h-2 w-[78%] rounded-full bg-gradient-to-r from-emerald-400 to-emerald-500" />
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center justify-between text-xs text-slate-300">
-                  <span>Incentive Engagement</span>
-                  <span className="font-semibold text-emerald-300">92%</span>
-                </div>
-                <div className="mt-1 h-2 rounded-full bg-slate-800">
-                  <div className="h-2 w-[92%] rounded-full bg-emerald-300" />
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center justify-between text-xs text-slate-300">
-                  <span>Pipeline Visibility</span>
-                  <span className="font-semibold text-emerald-300">Full</span>
-                </div>
-                <div className="mt-1 grid grid-cols-4 gap-1 text-[10px] text-slate-400">
-                  <span className="rounded bg-slate-800 px-2 py-1">
-                    New
-                  </span>
-                  <span className="rounded bg-slate-800 px-2 py-1">
-                    Qualified
-                  </span>
-                  <span className="rounded bg-slate-800 px-2 py-1">
-                    Proposal
-                  </span>
-                  <span className="rounded bg-emerald-500/20 px-2 py-1 text-emerald-200">
-                    Won
-                  </span>
-                </div>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="hero-card max-w-full"
+          >
+            {/* Image */}
+            <img
+              src="/graph.png"
+              alt="Sales performance graph"
+              className="w-full h-full object-cover rounded-2xl max-w-full"
+            />
+
+            {/* Content that flips up on hover */}
+            <div className="hero-card-content">
+              <h3 className="hero-card-title">
+                The <span className="text-emerald-600">EARN</span> Formula
+              </h3>
+              <p className="hero-card-description">
+                <strong className="text-emerald-600">E</strong>ffort tracking that's automatic.<br />
+                <strong className="text-emerald-600">A</strong>ccountability that's system-enforced.<br />
+                <strong className="text-emerald-600">R</strong>ewards tied to real outcomes.<br />
+                <strong className="text-emerald-600">N</strong>umbers you can trust daily.
+              </p>
+              <div className="mt-4 flex items-center gap-2 text-xs text-emerald-700 font-medium">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Transform your sales in 90 days
               </div>
             </div>
-            <div className="mt-4 grid grid-cols-3 gap-3 text-[11px]">
-              <div className="rounded-xl bg-slate-800/80 p-2">
-                <p className="text-slate-400">Top Rep</p>
-                <p className="font-semibold text-slate-50">142% quota</p>
-              </div>
-              <div className="rounded-xl bg-slate-800/80 p-2">
-                <p className="text-slate-400">Rewards Issued</p>
-                <p className="font-semibold text-emerald-300">$18.4k</p>
-              </div>
-              <div className="rounded-xl bg-slate-800/80 p-2">
-                <p className="text-slate-400">ROI on Incentives</p>
-                <p className="font-semibold text-emerald-300">5.2x</p>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

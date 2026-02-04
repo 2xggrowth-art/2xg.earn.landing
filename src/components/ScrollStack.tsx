@@ -9,7 +9,7 @@ export interface ScrollStackItemProps {
 
 export const ScrollStackItem: React.FC<ScrollStackItemProps> = ({ children, itemClassName = '' }) => (
     <div
-        className={`scroll-stack-card relative md:sticky md:top-0 w-full min-h-screen origin-top will-change-transform ${itemClassName}`.trim()}
+        className={`scroll-stack-card relative md:sticky md:top-0 w-full md:min-h-screen origin-top will-change-transform overflow-x-hidden ${itemClassName}`.trim()}
         style={{
             // CSS 'sticky' handles the heavy lifting of keeping the card in place on desktop.
             // On mobile, we default to relative scrolling to ensure content accessibility.
@@ -58,8 +58,33 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
         };
         const rafId = requestAnimationFrame(raf);
 
+        // Handle anchor link clicks for smooth scrolling
+        const handleAnchorClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            const anchor = target.closest('a[href^="#"]') as HTMLAnchorElement | null;
+            if (anchor) {
+                const hash = anchor.getAttribute('href');
+                if (hash && hash.startsWith('#')) {
+                    const targetEl = document.querySelector(hash);
+                    if (targetEl) {
+                        e.preventDefault();
+                        // Find the parent scroll-stack-card to account for sticky positioning
+                        const scrollCard = targetEl.closest('.scroll-stack-card');
+                        const scrollTarget = scrollCard || targetEl;
+                        // Use fast smooth scroll
+                        lenis.scrollTo(scrollTarget, {
+                            offset: -80,
+                            duration: 0.8
+                        });
+                    }
+                }
+            }
+        };
+        document.addEventListener('click', handleAnchorClick);
+
         return () => {
             cancelAnimationFrame(rafId);
+            document.removeEventListener('click', handleAnchorClick);
             lenis.destroy();
             lenisRef.current = null;
         };
@@ -154,7 +179,7 @@ const ScrollStack: React.FC<ScrollStackProps> = ({
     }, [itemScale]);
 
     return (
-        <div ref={wrapperRef} className={`relative w-full ${className}`}>
+        <div ref={wrapperRef} className={`relative w-full overflow-x-hidden ${className}`}>
             {children}
         </div>
     );
